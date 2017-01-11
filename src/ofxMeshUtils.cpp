@@ -124,3 +124,30 @@ ofMesh ofxMeshUtils::loadObj(string filename) {
 
 }
 
+//--------------------------------------------------------------------------
+void ofxMeshUtils::translate(ofMesh & mesh, ofVec3f pos){
+    for (int i=0; i<mesh.getNumVertices(); i++) {
+        mesh.getVertices()[i] += pos;
+    }
+}
+
+void ofxMeshUtils::rotate(ofMesh & mesh, float angle, ofVec3f axis){
+    for (int i=0; i<mesh.getNumVertices(); i++) {
+        mesh.getVertices()[i].rotate(angle, axis);
+    }
+}
+
+void ofxMeshUtils::scale(ofMesh &mesh, float x, float y, float z){
+    for (int i=0; i<mesh.getNumVertices(); i++) {
+        mesh.getVertices()[i].x *= x;
+        mesh.getVertices()[i].y *= y;
+        mesh.getVertices()[i].z *= z;
+    }
+}
+
+void ofxMeshUtils::transform(ofMesh &mesh, ofMatrix4x4 mat){
+    for (int i=0; i<mesh.getNumVertices(); i++) {
+        mesh.getVertices()[i]= mat.preMult(mesh.getVertices()[i]);
+    }
+}
+

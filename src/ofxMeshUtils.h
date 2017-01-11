@@ -21,5 +21,10 @@ public:
     
     //--------------------------------------------------------------------------
     static ofMesh loadObj(string filename);
+    
+    static void translate(ofMesh & mesh, ofVec3f pos);
+    static void rotate(ofMesh & mesh, float angle, ofVec3f axis);
+    static void scale(ofMesh &mesh, float x, float y, float z = 1);
+    static void transform(ofMesh &mesh, ofMatrix4x4 mat);
 };
 
